@@ -1,10 +1,10 @@
 ---
-title: "Building & rebuilding this package"
+title: "y) Building & rebuilding this package"
 author: "Nathan Brouwer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Building & rebuilding this package}
+  %\VignetteIndexEntry{z) Building & rebuilding this package}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -21,25 +21,25 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-This code is used to build, re-build, and trouble shoot the building of the package, including 
-
-1. Building/compiling diffrent components
-1. Building the website for the package using pkgdown
+This code is used to build, re-build, and trouble shoot the building of the package. 
 
 These are mostly commands that can be launched from within RStudio via the GUI, except pkgdown::build_site()
 
 ## devtools functions
 
-The devtools package is
+This requires the devtools package.
 
 ```{r}
 library(devtools)
 ```
 
+## Vignettes
+
+I build and troubleshoot vignettes by knitting them individually, then when things are running smooth build the package.
 
 ### Clean vignettes
 
-"This uses a fairly rudimentary algorithm where any files in ‘inst/doc’ with a name that exists in ‘vignettes’ are removed."
+Cleans up stray files associated vignettes.
 
 ```{r, eval = F}
 devtools::clean_vignettes() 
@@ -47,11 +47,31 @@ devtools::clean_vignettes()
 
 ### Build vignettes
 
-"Builds package vignettes using the same algorithm that R CMD build does"
+devtools::build_vignettes() does the same things call
+R CMD build 
 
 ```{r, eval = F}
 devtools::build_vignettes()
 ```
+
+
+**NOTE:** The most common error I get here is 
+
+```{r, eval = F}
+Error: callr subprocess failed: Duplicate vignette titles.
+  Ensure that the %\VignetteIndexEntry lines in the vignette sources
+  correspond to the vignette titles.
+```
+
+
+This occurs because there's a pesky bit in the YAML header of Vigenettes
+
+```{r, eval = F}
+%\VignetteIndexEntry{...}
+```
+
+
+If you copy and paste the YAML header when you make a new vignette, you need to remember change this.
 
 ### Build documentation
 
@@ -77,56 +97,11 @@ devtools::check()
 
 check_failures
 
-## pckgdown functions
-
-### Build package down website
-
-Single function to build whole site:
-"This will generate a docs/ directory. The home page will be generated from your package’s README.md, and a function reference will be generated from the documentation in the man/ directory."
-```{r, eval = F}
-pkgdown::build_site()
-```
-
-```{r}
-
-```
-
-
-#### Build piece by piece
-
-pkgdown::clean_site (pkg = ".")
-
--- Initialising site
-```{r, eval = F}
-pkgdown::init_site(pkg = ".")
-```
-
-Building home 
-```{r, eval = F}
-pkgdown::build_home(pkg = ".")
-```
-
-Building function reference
-```{r, eval = F}
-pkgdown::build_reference(pkg = ".")
-```
-
-
-Build vignettes
-```{r, eval = F}
-pkgdown::build_articles(pkg = ".")
-```
-
-
-```{r, eval = F}
-pkgdown::build_news()
-```
-
 
 
 ## Explore dependencies
 
-```{r}
+```{r, eval = F}
 report1 <- CreatePackageReport(pkg_name = "FACavian")
 ```
 
@@ -159,7 +134,7 @@ check(cleanup = FALSE,manual = TRUE,path = getwd())
 
 ## Keep logs files (?)
 
-```{r}
+```{r, eval = F}
 options(keep.source.pkgs = TRUE)
 devtools::check()
 ```
@@ -174,7 +149,7 @@ devtools::check()
 "Install restart"
 ==> Rcmd.exe INSTALL --no-multiarch --with-keep.source mammalsmilk
 
-```{r}
+```{r, eval = F}
 devtools::check(env_vars = )
 ```
 

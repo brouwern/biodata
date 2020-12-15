@@ -5,3 +5,5 @@
 ^pkgdown$
 ^data-raw$
 ^LICENSE\.md$
+^doc$
+^Meta$

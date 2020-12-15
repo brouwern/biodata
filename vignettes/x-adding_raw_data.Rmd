@@ -1,0 +1,138 @@
+---
+title: "x) Creating data objects for an R Package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{x) Creating data objects for  an R Package}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+For overview read https://r-pkgs.org/data.html
+
+## Preliminaries
+
+```{r, eval = F}
+library(usethis)
+library(here)
+```
+
+
+
+##  Create  /data-raw
+
+This creates the folder /data-raw and adds a file DATASET.R
+
+```{r, eval = F}
+usethis::use_data_raw()
+```
+
+## Create data processing scripts
+
+### Create script file
+
+```{r, eval = F}
+usethis::use_data_raw(name = "human_gene_lengths")
+```
+
+### Get the data
+
+In this case I'm using data from Whitlock and Schulter's 2nd edition of [*Analysis of Biological Data*](https://www.amazon.com/Analysis-Biological-Data-Michael-Whitlock/dp/0981519407), downloaded from the [book's website](https://whitlockschluter.zoology.ubc.ca/) https://whitlockschluter.zoology.ubc.ca/
+
+```{r, eval = F}
+human_gene_lengths <- read.csv(url("http://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter04/chap04e1HumanGeneLengths.csv"))
+
+names(human_gene_lengths) <- "gene_length"
+```
+
+### Create the .RData file
+
+This converts and R object into a .RData file that can be loaded with data().
+
+If necessary it creates a data/ folder for the package.
+
+```{r, eval = F}
+usethis::use_data(human_gene_lengths, 
+                  overwrite = TRUE)
+```
+
+### Create documentation file for the data
+
+All datasets need a .R file the goes in the R/ folder, along with any .R files that define functions.
+
+
+```{r, eval = F}
+usethis::use_r(name = "human_gene_lengths", open = T)
+```
+
+This is an opportunity though to provide full documentation for the dataset.  A minimal helpfile could look like this:
+
+```{r, eval = F}
+#' Dataset helpfile header . . .
+#'
+#' Short description of data . . .
+#'
+#' @format A data frame with x rows and y column(s)
+#' \describe{
+#'   \item{column1}{Describe column here . . .}
+#'   \item{column2}{Describe column here . . .}
+#'  ...
+#' }
+#' @source \url{http://www.whereyougotthedata.com/"}
+#'
+"dataset_name"
+```
+
+You can also add additional things that appear in R help files such as full citation information and examples.
+
+For other examples see https://github.com/hadley/babynames/blob/master/R/data.R
+
+
+
+The function defined below can be used to build this helpfile template automatically.  It is also found in my [biodata](https://github.com/brouwern/biodata) package.
+
+```{r, eval = F}
+# Function to build template for dataset helpf file
+make_dateset_helpfile <- function(dataset,
+                                  dataset_name  = "temp"){
+  library(here)
+
+  dataset <- human_gene_lengths
+  dataset_name <- "human_gene_lengths"
+  to_sink <- paste(dataset_name,"R",sep = ".")
+  to_sink_with_dir <- here::here("R",to_sink)
+
+  sink(to_sink_with_dir)
+  cat("#' Dataset helpfile header . . .\n")
+  cat("#'\n")
+  cat("#' Short description of data . . . \n")
+  cat("#'\n")
+  cat("#' @format A data frame with ", dim(dataset)[1], " rows and ",dim(dataset)[2]," column(s)\n", sep = "")
+  cat("#' \\describe{\n", sep = "")
+
+  for(i in 1:ncol(dataset)){
+    colname.i <- names(dataset)[i]
+    cat("#'   \\item{",colname.i,"}{Describe column ",colname.i, " here . . .}\n",sep = "")
+  }
+
+  cat("#' }\n")
+  cat("#' @source \\url{http://www.whereyougotthedata.com/}\n")
+  cat("#'\n")
+  cat("'",dataset_name,"'", sep = "")
+  sink()
+}
+
+
+```
+
+
+

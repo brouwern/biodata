@@ -1,10 +1,10 @@
 ---
-title: "Creating this package"
+title: "w) Creating this package"
 author: "Nathan Brouwer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Creating this package}
+  %\VignetteIndexEntry{w) Creating this package}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -12,13 +12,16 @@ editor_options:
 ---
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
 ```
 
 ## Introduction
 
-I like to set up all of my projects in the form of an R package.  This imposes a consistent structure to everything so I always know where to find things.  R packages aren't perfectly suited for everything, but I'm willing to sacrifice custome file organization for consistency.  I also like to reduce the choice paralysis that can set in with trying to figure out how to organize a project.  For more on using R packages for setting up projects - and some extensions and alternatives -- see "Packaging Data Analytical Work Reproducibly Using R (and Friends)" by [Marwick et al (2018).](https://doi.org/10.1080/00031305.2017.1375986).
+I like to set up all of my projects in the form of an R package.  This imposes a consistent structure to everything so I always know where to find things.  R packages aren't perfectly suited for everything, but I'm willing to sacrifice custom file organization for consistency.  I also like to reduce the choice paralysis that can set in with trying to figure out how to organize a project.  For more on using R packages for setting up projects - and some extensions and alternatives -- see "Packaging Data Analytical Work Reproducibly Using R (and Friends)" by [Marwick et al (2018).](https://doi.org/10.1080/00031305.2017.1375986).
 
 The key elements of this approach are 
 
@@ -29,29 +32,29 @@ The key elements of this approach are
 1. data
 1. install
 
-One of the major drawback of this apporach is that the "install" folder is ...
+One of the major drawback of this approach is that the "install" folder is ...
 
-The following code outlines the key steps I use to set up the framework for a package, principally using the "how could I do this with out it" `r usethis` package.
+The following code outlines the key steps I use to set up the framework for a package, principally using the "how could I do this with out it" usethis package.
  
 
 ## Required packages
 
 I use these packages for setting things up:
 
-1. `r devtools`: for general developer stuff
-1. `r usethis`: for functions to automatically build key package components
-1. `r here`: for setting up paths to directories and files.
+1. devtools: for general developer stuff
+1. usethis: for functions to automatically build key package components
+1. here: for setting up paths to directories and files.
 
 ```{r, eval = F}
 library(devtools)
 library(usethis)
 library(here)
-library(spelling)
+#library(spelling)
 ```
 
 ## Preliminaries
 
-### Create a repository usig GitHub
+### Create a repository using GitHub
 
 I create the GitHub repo for a package directly via the GitHub website.  (There's probably a way to do this from within R this but I haven't bothered to figure it out).
 
@@ -60,13 +63,13 @@ I create the GitHub repo for a package directly via the GitHub website.  (There'
 
 I then create an R project and directory for the packing from within RStudio using
 
-1. File -> New Project -> Verion Control -> Git
+1. File -> New Project -> Version Control -> Git
 1. Paste in link to the repo from GitHub
 
 
-### Set up the package with `r usethis`
+### Set up the package with usethis
 
-I then use usethis::create_package() within my project directory to build the basic package infrastructure  This overights the initial project (after a handy prompt in the console).
+I then use usethis::create_package() within my project directory to build the basic package infrastructure  This over rights the initial project (after a handy prompt in the console).
 
 ```{r eval = F}
 usethis::create_package(path = getwd())
@@ -79,14 +82,15 @@ usethis::create_package(path = getwd())
 I create the vignette infrastructure and a dummy vignette like this:
 
 ```{r, eval = F}
-usethis::use_vignette("temp")
+usethis::use_vignette("z",
+                      title = "Adding data to an R Package")
 ```
 
-I then write my vignettes using this template and change the file name.  I label all my vignettes with a leading "a)", "b)", etc to keep them easily origanized in the vignettes folder and in the dropdown menu of my rendered `r pkgdown` site. 
+I then write my vignettes using this template and change the file name.  I label all my vignettes with a leading "a)", "b)", etc to keep them easily organized in the vignettes folder and in the dropdown menu of my rendered pkgdown site. 
 
 ### Copy in package-making script
 
-I copy this script and related ones for maintaining the package into the vignettes folder.  I call this scrit something like "x) building_this_package.Rmd".  (I always include this script in my packages so I can easily find the most up to date version just by going to my most recent project).
+I copy this script and related ones for maintaining the package into the vignettes folder.  I call this script something like "x) building_this_package.Rmd".  (I always include this script in my packages so I can easily find the most up to date version just by going to my most recent project).
 
 
 ## Create the readme.md file
@@ -107,17 +111,21 @@ I add basic information to the readme fill and add sample code for a call to dev
 
 #### Example materials for readme
 
-The developement version of `r biodata` is on GitHub.  If you don't already have it, you will need to install the `r devtools` package
+The development version of biodata is on GitHub.  If you don't already have it, you will need to install the devtools package
 
 ``` r
 install.packages("devtools")
 ```
 
-You can then install the `r biodata` from GitHub with:
+You can then install the biodata from GitHub with:
 
 ``` r
 devtools::install_github("brouwern/biodata")
 ```
+
+
+Once I have added data and/or functions to the package its good to present a typical or motivating use of the package. 
+
 
 
 ## Add required packages to 
@@ -125,25 +133,27 @@ devtools::install_github("brouwern/biodata")
 These are the packages I typically use.  I should vectorize this so it would look nicer : )
 
 ```{r, eval = F}
-#usethis::use_package("ggplot2", "Imports")
-#usethis::use_package("ggpubr",  "Imports")
+# admin
+usethis::use_package("here",   "Imports")
+usethis::use_package("devtools",   "Imports")
+
+# visualization
+usethis::use_package("ggplot2", "Imports")
+usethis::use_package("ggpubr",  "Imports")
+usethis::use_package("cowplot",   "Imports")
+
 #usethis::use_package("tint",   "Imports")
 #usethis::use_package("formatR",   "Imports")
 #usethis::use_package("readxl",   "Imports")
-#usethis::use_package("cowplot",   "Imports")
-#usethis::use_package("ggpubr",   "Imports")
 #usethis::use_package("dplyr",   "Imports")
 #usethis::use_package("pander",   "Imports")
 #usethis::use_package("plotrix",   "Imports")
-#usethis::use_package("here",   "Imports")
-#usethis::use_package("pbkrtest",   "Imports")
-#usethis::use_package("lmerTest",   "Imports")
+
 #usethis::use_package("reshape2",   "Imports")
 
 #usethis::use_package("dplyr",   "Imports")
 #usethis::use_package("tidyr",   "Imports")
 
-# use_package("bbmle", "Imports")
 # use_package("RCurl", "Imports")
 # use_package("GGally", "Imports")
 # use_package("broom", "Imports")
@@ -156,10 +166,10 @@ These are the packages I typically use.  I should vectorize this so it would loo
 
 ### Create git ignore file
 
-The git ignore file tells your local git installation to not track and push unneccassy file. 
+The git ignore file tells your local git installation to not track and push unnecessary file. 
 
 usethis::git_vaccinate() "Adds .DS_Store, .Rproj.user, .Rdata, .Rhistory, and .httr-oauth to your global (a.k.a. user-level) .gitignore. This is good practice as it decreases the chance that you will accidentally leak credentials to GitHub."
-```{r}
+```{r, eval = F}
 usethis::git_vaccinate()
 ```
 
@@ -175,7 +185,7 @@ usethis::use_git_ignore(".docx", directory = ".")
 
 ### Create package news files
 
-```{r}
+```{r, eval = F}
 usethis::use_news_md()
 ```
 
@@ -226,7 +236,7 @@ usethis::use_pkgdown()
 
 R packages often have a folder called "/inst" which stands for "installed."  This folder is usually for miscellaneous files associated with the package.  This includes external data ("/extdata") such as .csv files.
 
-```{r}
+```{r, eval = F}
 dir.create(here::here("/inst"))
 dir.create(here::here("/inst/extdata"))
 ```
@@ -254,19 +264,21 @@ usethis::use_data_raw()
 ```
 
 
+In a separate article I summarize the steps for setting up an actual data set.
+
 ## License
 
 For information on licenses see
 http://kbroman.org/pkg_primer/pages/licenses.html
 
-Plaintext versions of licenses can be found at
+Plain text versions of licenses can be found at
 https://creativecommons.org/2011/04/15/plaintext-versions-of-creative-commons-licenses-and-cc0/
 
 ```{r, eval = F}
 usethis::use_gpl_license(version = 3, include_future = TRUE)
 ```
 
-An error can occur if you have a separate license file.  eg
+An error can occur if you have a separate license file.  e.g.
 
 >File LICENSE is not mentioned in the DESCRIPTION file.
 
@@ -290,15 +302,15 @@ usethis::use_spell_check(vignettes = TRUE, lang = "en-US", error = FALSE)
 
 ## Documenting datasets
 
-All data sets must be documented.  
+All datasets saved in /data must be documented.  
 
 ```{r, eval = F}
 # usethis::use_r(name = "fledgedata")
 
 ```
 
-A minimal R dataset .R file looks like this
-#' Full dataset dfor Meillere et al. 2015
+A minimal R dataset .R documentation file looks like this
+#' Full dataset for Meillere et al. 2015
 "telosful"
 
 A standard R dataset  .R file looks like this
@@ -321,9 +333,6 @@ A standard R dataset  .R file looks like this
 ### Other potentially useful usethis functions
 
 * use_r() Create or edit a .R file
-
-
-
 * use_build_ignore() Add files to .Rbuildignore
 * use_version() use_dev_version() Increment package version
 * edit_r_profile() 

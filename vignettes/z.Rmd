@@ -1,0 +1,60 @@
+---
+title: "z) Building pckgdwn site"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{z) Building pckgdwn site}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+## pckgdown functions
+
+### Build packgdwn website
+
+Single function to build whole site:
+"This will generate a docs/ directory. The home page will be generated from your package’s README.md, and a function reference will be generated from the documentation in the man/ directory."
+```{r, eval = F}
+pkgdown::build_site()
+```
+
+
+#### Build piece by piece
+
+pkgdown::clean_site (pkg = ".")
+
+-- Initialising site
+```{r, eval = F}
+pkgdown::init_site(pkg = ".")
+```
+
+Building home 
+```{r, eval = F}
+pkgdown::build_home(pkg = ".")
+```
+
+Building function reference
+```{r, eval = F}
+pkgdown::build_reference(pkg = ".")
+```
+
+
+Build vignettes.  Note that of 12/15/20 the package ragg is a dependency of pkgdown that doesn't download with pckdown.
+```{r, eval = F}
+pkgdown::build_articles(pkg = ".")
+```
+
+
+```{r, eval = F}
+pkgdown::build_news()
+```
+

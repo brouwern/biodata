@@ -1,0 +1,66 @@
+---
+title: "z) Building Packagedown Site"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Adding data to an R Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(biodata)
+```
+
+
+## pckgdown functions
+
+### Build package down website
+
+Single function to build whole site:
+"This will generate a docs/ directory. The home page will be generated from your package’s README.md, and a function reference will be generated from the documentation in the man/ directory."
+```{r, eval = F}
+pkgdown::build_site()
+```
+
+```{r}
+
+```
+
+
+#### Build piece by piece
+
+pkgdown::clean_site (pkg = ".")
+
+-- Initialising site
+```{r, eval = F}
+pkgdown::init_site(pkg = ".")
+```
+
+Building home 
+```{r, eval = F}
+pkgdown::build_home(pkg = ".")
+```
+
+Building function reference
+```{r, eval = F}
+pkgdown::build_reference(pkg = ".")
+```
+
+
+Build vignettes
+```{r, eval = F}
+pkgdown::build_articles(pkg = ".")
+```
+
+
+```{r, eval = F}
+pkgdown::build_news()
+```
+
