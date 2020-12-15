@@ -1,0 +1,10 @@
+pandoc: 2.3.1
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  w-building_R_packages: w-building_R_packages.html
+  x-adding_raw_data: x-adding_raw_data.html
+  y-build_package: y-build_package.html
+  z: z.html
+last_built: 2020-12-15T20:16Z
+
