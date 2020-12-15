@@ -2,7 +2,7 @@
 title: "x) Creating data objects for an R Package"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{x) Creating data objects for  an R Package}
+  %\VignetteIndexEntry{x) Creating data objects for an R Package}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
