@@ -1,12 +1,12 @@
 Package: biodata
-Title: Datasets for the life sciences
+Title: Example datasets and analyses from the life sciences.
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Nathan",
            family = "Brouwer",
            role = c("aut", "cre"),
            email = "brouwernt@gmail.com")
-Description: Datasets and example analyses for the life sciences..
+Description: biodata is a repository of datasets from throughout the life sciences which can be used for demonstrating, exploring, and learning data science, statistic, and machine learning.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true

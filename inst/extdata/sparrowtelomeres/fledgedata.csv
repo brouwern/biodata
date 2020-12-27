@@ -1,0 +1,17 @@
+"nest","treatment","fledged.no","fledged.yes","brood.size","nest.success"
+"A","disturbed",3,0,3,0
+"B","disturbed",1,0,1,0
+"C","control",0,2,2,1
+"D","disturbed",0,3,3,1
+"E","control",4,0,4,0
+"F","control",0,2,2,1
+"G","disturbed",4,0,4,0
+"H","control",4,0,4,0
+"I","control",0,1,1,1
+"J","disturbed",1,0,1,0
+"K","disturbed",1,0,1,0
+"L","control",0,2,2,1
+"M","disturbed",2,0,2,0
+"N","disturbed",0,4,4,1
+"O","control",0,1,1,1
+"P","disturbed",0,2,2,1

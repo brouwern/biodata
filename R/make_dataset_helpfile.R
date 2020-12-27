@@ -8,7 +8,6 @@
 #'
 #' @param dataset Dataframe object.
 #' @param dataset_name Quoted name of the dataset object
-#' @param .id Supply a string to create a new variable which gives a unique
 #' @export
 
 make_dateset_helpfile <- function(dataset,

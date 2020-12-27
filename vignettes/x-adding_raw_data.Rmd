@@ -98,7 +98,17 @@ For other examples see https://github.com/hadley/babynames/blob/master/R/data.R
 
 
 
-The function defined below can be used to build this helpfile template automatically.  It is also found in my [biodata](https://github.com/brouwern/biodata) package.
+A function defined at the end of this Vignette can be used to build this helpfile template automatically.  It is also found in my [biodata](https://github.com/brouwern/biodata) package.
+
+
+### Things that can be included in a dataset
+
+
+
+
+
+
+## Helpfer functio: make_dateset_helpfile()
 
 ```{r, eval = F}
 # Function to build template for dataset helpf file

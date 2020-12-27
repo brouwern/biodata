@@ -82,8 +82,8 @@ usethis::create_package(path = getwd())
 I create the vignette infrastructure and a dummy vignette like this:
 
 ```{r, eval = F}
-usethis::use_vignette("z",
-                      title = "Adding data to an R Package")
+usethis::use_vignette("d-four_sample-plots",
+                      title = "d) Four sample plots")
 ```
 
 I then write my vignettes using this template and change the file name.  I label all my vignettes with a leading "a)", "b)", etc to keep them easily organized in the vignettes folder and in the dropdown menu of my rendered pkgdown site. 
