@@ -116,10 +116,8 @@ chimpbehavior99 <- data.frame(chimpbehavior99[,1:6],
 
 #This converts and R object into a .RData file that can be loaded with data().
 
-# If necessary it creates a `r data/`r folder for the package.
-
-
-usethis::use_data(human_gene_lengths, overwrite = TRUE)
+# It is necessary to creates a `r data/`r folder for the package.
+usethis::use_data(chimpbehavior99, overwrite = TRUE)
 
 
 ### Create documentation file for the data
@@ -127,7 +125,9 @@ usethis::use_data(human_gene_lengths, overwrite = TRUE)
 # All datasets need a .R file the goes in the `r R/`r folder, along with any .R files that define functions.
 
 
-usethis::use_r(name = "human_gene_lengths", open = T)
+# usethis::use_r(name = "chimpbehavior99", open = T)
 
+make_dateset_helpfile(dataset = chimpbehavior99,
+                      dataset_name = "chimpbehavior99")
 
 

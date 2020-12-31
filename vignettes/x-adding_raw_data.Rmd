@@ -74,7 +74,7 @@ All datasets need a .R file the goes in the R/ folder, along with any .R files t
 usethis::use_r(name = "human_gene_lengths", open = T)
 ```
 
-This is an opportunity though to provide full documentation for the dataset.  A minimal helpfile could look like this:
+This is an opportunity  to provide full documentation for the dataset.  A minimal helpfile could look like this:
 
 ```{r, eval = F}
 #' Dataset helpfile header . . .
@@ -116,8 +116,8 @@ make_dateset_helpfile <- function(dataset,
                                   dataset_name  = "temp"){
   library(here)
 
-  dataset <- human_gene_lengths
-  dataset_name <- "human_gene_lengths"
+  
+  
   to_sink <- paste(dataset_name,"R",sep = ".")
   to_sink_with_dir <- here::here("R",to_sink)
 

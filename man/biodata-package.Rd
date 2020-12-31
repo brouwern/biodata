@@ -4,9 +4,9 @@
 \name{biodata-package}
 \alias{biodata}
 \alias{biodata-package}
-\title{biodata: Datasets for the life sciences}
+\title{biodata: Example datasets and analyses from the life sciences.}
 \description{
-Datasets and example analyses for the life sciences..
+biodata is a repository of datasets from throughout the life sciences which can be used for demonstrating, exploring, and learning data science, statistic, and machine learning.
 }
 \author{
 \strong{Maintainer}: Nathan Brouwer \email{brouwernt@gmail.com}

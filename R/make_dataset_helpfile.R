@@ -14,8 +14,6 @@ make_dateset_helpfile <- function(dataset,
                                   dataset_name  = "temp"){
   library(here)
 
-  dataset <- human_gene_lengths
-  dataset_name <- "human_gene_lengths"
   to_sink <- paste(dataset_name,"R",sep = ".")
   to_sink_with_dir <- here::here("R",to_sink)
 

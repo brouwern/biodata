@@ -10,8 +10,6 @@ make_dateset_helpfile(dataset, dataset_name = "temp")
 \item{dataset}{Dataframe object.}
 
 \item{dataset_name}{Quoted name of the dataset object}
-
-\item{.id}{Supply a string to create a new variable which gives a unique}
 }
 \description{
 Given an dataframe, creates a template for a R package documentation file.

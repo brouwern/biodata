@@ -1,7 +1,7 @@
 #,,,,,Bossou,Tai_Forest,Gombe,Mahale_M-group,Mahale K-group ,Kibale Forest,Budongo Forest,
 #,,,,,Guinea,Guinea,Tanzania,Tanzania,Tanzania,Uganda,Uganda,
-#,,,,,verus,verus,schweinfurthii,schweinfurthii,schweinfurthii,schweinfurthii,schweinfurthii,comments
-behavior.group,group.i,behavior.i,behavior.type,behavior,Bs,Ta,Go,Ma,Mk,Kib,Bd,
+#,,,,,verus,verus,schweinfurthii,schweinfurthii,schweinfurthii,schweinfurthii,schweinfurthii,
+behavior.group,group.i,behavior.i,behavior.type,behavior,Bs,Ta,Go,Ma,Mk,Kib,Bd,comments
 A,1,1,NA,Investigatory probe (probe and sniff),H,C,C,H,H,+,(Ð),
 A,2,2,NA,Play start (invite play holding stem in mouth),+,H,C,C,C,C,H,
 A,3,3,NA,Drag branch (drag large branch in display),H,C,C,C,C,H,H,

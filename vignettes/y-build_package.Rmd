@@ -4,7 +4,7 @@ author: "Nathan Brouwer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{z) Building & rebuilding this package}
+  %\VignetteIndexEntry{y) Building & rebuilding this package}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
